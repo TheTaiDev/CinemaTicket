@@ -51,4 +51,19 @@ const handleSearchSubmit = () => {
   {/* Giao diện thông báo không tìm thấy kết quả */}
 )}
 ```
-
+**Hiển thị các phần tử trong danh sách kết quả tìm kiếm**
+```react
+{searchResults.map((val, index) => {
+  return (
+    <View
+      style={{
+        width: 170,
+        height: 278,
+      }}
+      key={index}
+    >
+      {/* Giao diện hình ảnh và thông tin phim */}
+    </View>
+  );
+})}
+```
