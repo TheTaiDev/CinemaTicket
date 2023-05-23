@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
+import React, { useState } from "react";
+import { View, TextInput, Button, Text, FlatList, Image } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./screens/HomeScreen";
+const Stack = createStackNavigator();
+function ChatStack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{
+          headerShown: true,
+
+          title: "Home",
+          headerStyle: {
+            backgroundColor: "rgba(31, 41, 61, 0.7)",
+          },
+          headerTintColor: "#FFFF",
+          headerTitleStyle: {
+            textAlign: "center",
+          },
+        }}
+        component={HomeScreen}
+        name="HomeScreen"
+      />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function RootNavigator() {
+  return (
+    <NavigationContainer>
+      <ChatStack />
+    </NavigationContainer>
+  );
+}
+export default function App() {
+  return <RootNavigator />;
+}

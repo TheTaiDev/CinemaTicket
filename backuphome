@@ -1,0 +1,335 @@
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+  TextInput,
+} from "react-native";
+import React, { Component, useLayoutEffect, useState } from "react";
+import Icon from "react-native-vector-icons/Ionicons";
+import movieData from "../data";
+export default function HomeScreen({ navigation }) {
+  // Chức năng tìm kiếm
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearchPress = () => {
+    setSearchVisible(true);
+  };
+
+  const handleSearchCancel = () => {
+    setSearchVisible(false);
+    setSearchText("");
+    setSearchResults([]);
+  };
+
+  const handleSearchSubmit = () => {
+    console.log("Search Text:", searchText);
+
+    if (searchText.trim() === "") {
+      setSearchResults(movieData);
+    } else {
+      const filteredData = movieData.filter(
+        (movie) =>
+          movie.Title.toLowerCase().includes(searchText.toLowerCase()) ||
+          movie.Year.toLowerCase().includes(searchText.toLowerCase())
+      );
+
+      setSearchResults(filteredData);
+    }
+  };
+  //
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitleAlign: "left",
+      headerTitle: () => (
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <View
+            style={{
+              paddingLeft: 10,
+            }}
+          ></View>
+        </View>
+      ),
+      headerLeft: () => (
+        <View style={{ marginLeft: 16, flexDirection: "row", marginRight: 20 }}>
+          <Image
+            style={{
+              height: 48,
+              width: 48,
+            }}
+            source={require("../assets/image/logo.png")}
+          />
+          <View
+            style={{
+              justifyContent: "center",
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 35,
+            }}
+          >
+            <Icon name="location" size={25} color={"#637394"} />
+            <Text
+              style={{
+                paddingLeft: 5,
+                fontSize: 14,
+                color: "#FFFFFF",
+                fontWeight: 700,
+                lineHeight: 17,
+              }}
+            >
+              Nur-Sultan
+            </Text>
+          </View>
+        </View>
+      ),
+      headerRight: () => (
+        <View style={{ flexDirection: "row", marginRight: 20 }}>
+          <View
+            style={{
+              justifyContent: "center",
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: 10,
+            }}
+          >
+            <Icon name="language" size={25} color={"#637394"} />
+            <Text
+              style={{
+                paddingRight: 18,
+                paddingLeft: 5,
+
+                fontSize: 14,
+                color: "#FFFFFF",
+                fontWeight: 700,
+                lineHeight: 17,
+              }}
+            >
+              Eng
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{
+              borderRadius: 8,
+              width: 70,
+              height: 40,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "rgba(255, 128, 54, 1)",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 14,
+                fontWeight: 700,
+                lineHeight: 17,
+                color: "#FFFFFF",
+              }}
+            >
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
+      ),
+    });
+  });
+  return (
+    <SafeAreaView
+      style={{
+        paddingHorizontal: 16,
+        flex: 1,
+        backgroundColor: "rgba(31, 41, 61, 0.7)",
+      }}
+    >
+      {/* header */}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          paddingVertical: 22,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: 700,
+            lineHeight: 30,
+            color: "#FFFFFF",
+          }}
+        >
+          Now in cinemas
+        </Text>
+        {searchVisible ? (
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              top: 20,
+              //   right: -20,
+              position: "absolute",
+            }}
+          >
+            <TextInput
+              style={{
+                width: 355,
+                height: 40,
+                backgroundColor: "#FFFFFF",
+                paddingHorizontal: 10,
+                borderRadius: 5,
+              }}
+              placeholder="Search..."
+              value={searchText}
+              onChangeText={setSearchText}
+              onSubmitEditing={handleSearchSubmit}
+            />
+            <TouchableOpacity onPress={handleSearchCancel}>
+              <Icon name="close" size={25} color={"#637394"} />
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <TouchableOpacity onPress={handleSearchPress}>
+            <Icon name="search" size={25} color={"#637394"} />
+          </TouchableOpacity>
+        )}
+      </View>
+      {/*  */}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignContent: "center",
+            marginLeft: 12,
+            gap: 15,
+          }}
+        >
+          {/* Content */}
+          {searchResults.length > 0
+            ? // Hiển thị kết quả tìm kiếm nếu có kết quả
+              searchResults.map((val, index) => {
+                return (
+                  <View
+                    style={{
+                      width: 170,
+                      height: 278,
+                    }}
+                    key={index}
+                  >
+                    {/* img */}
+                    <View
+                      style={{
+                        width: 170,
+                        height: 230,
+                      }}
+                    >
+                      <Image
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: 8,
+                        }}
+                        source={{ uri: val.Poster }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        width: 170,
+                        height: 40,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 20,
+                          fontWeight: 700,
+                          color: "#FFFFFF",
+                        }}
+                        numberOfLines={1}
+                      >
+                        {val.Title}
+                      </Text>
+                      <Text
+                        style={{
+                          color: "#a6afed",
+                          fontSize: 14,
+                          fontWeight: 500,
+                          lineHeight: 17,
+                        }}
+                      >
+                        {val.Year}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })
+            : // Hiển thị toàn bộ dữ liệu nếu không có kết quả tìm kiếm
+              movieData.map((val, index) => {
+                return (
+                  <View
+                    style={{
+                      width: 170,
+                      height: 278,
+                    }}
+                    key={index}
+                  >
+                    {/* img */}
+                    <View
+                      style={{
+                        width: 170,
+                        height: 230,
+                      }}
+                    >
+                      <Image
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: 8,
+                        }}
+                        source={{ uri: val.Poster }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        width: 170,
+                        height: 40,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 20,
+                          fontWeight: 700,
+                          color: "#FFFFFF",
+                        }}
+                        numberOfLines={1}
+                      >
+                        {val.Title}
+                      </Text>
+                      <Text
+                        style={{
+                          color: "#a6afed",
+                          fontSize: 14,
+                          fontWeight: 500,
+                          lineHeight: 17,
+                        }}
+                      >
+                        {val.Year}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
