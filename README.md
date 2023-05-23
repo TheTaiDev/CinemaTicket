@@ -15,7 +15,7 @@ const handleSearchPress = () => {
   setSearchVisible(true);
 };
 ```
-**Xử lý sự kiện khi người dùng hủy tìm kiếm
+**Xử lý sự kiện khi người dùng hủy tìm kiếm**
 ``` react 
 const handleSearchCancel = () => {
   setSearchVisible(false);
@@ -24,7 +24,7 @@ const handleSearchCancel = () => {
 };
 ```
 
-**Xử lý sự kiện khi người dùng nhấn nút gửi tìm kiếm
+**Xử lý sự kiện khi người dùng nhấn nút gửi tìm kiếm**
 ``` react 
 const handleSearchSubmit = () => {
   console.log("Search Text:", searchText);
@@ -43,7 +43,7 @@ const handleSearchSubmit = () => {
 };
 
 ```
-**Hiển thị danh sách kết quả tìm kiếm hoặc thông báo không tìm thấy kết quả
+**Hiển thị danh sách kết quả tìm kiếm hoặc thông báo không tìm thấy kết quả**
 ```react
 {searchResults.length > 0 ? (
   {/* Giao diện danh sách kết quả tìm kiếm */}
