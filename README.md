@@ -1,4 +1,5 @@
-# CinemaTicket
+# Cinema Tickets Booking App
+
 
 ## 1. Home Screen
 
