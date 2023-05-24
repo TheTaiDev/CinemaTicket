@@ -84,7 +84,7 @@ export default function HomeScreen({ navigation }) {
                 paddingLeft: 5,
                 fontSize: 14,
                 color: "#FFFFFF",
-                fontWeight: 700,
+                fontWeight: "bold",
                 lineHeight: 17,
               }}
             >
@@ -111,7 +111,7 @@ export default function HomeScreen({ navigation }) {
 
                 fontSize: 14,
                 color: "#FFFFFF",
-                fontWeight: 700,
+                fontWeight: "bold",
                 lineHeight: 17,
               }}
             >
@@ -119,6 +119,7 @@ export default function HomeScreen({ navigation }) {
             </Text>
           </View>
           <TouchableOpacity
+            onPress={() => navigation.navigate("LoginScreen")}
             style={{
               borderRadius: 8,
               width: 70,
@@ -131,7 +132,7 @@ export default function HomeScreen({ navigation }) {
             <Text
               style={{
                 fontSize: 14,
-                fontWeight: 700,
+                fontWeight: "bold",
                 lineHeight: 17,
                 color: "#FFFFFF",
               }}
@@ -161,7 +162,7 @@ export default function HomeScreen({ navigation }) {
         <Text
           style={{
             fontSize: 24,
-            fontWeight: "700",
+            fontWeight: "bold",
             lineHeight: 30,
             color: "#FFFFFF",
           }}
@@ -213,7 +214,12 @@ export default function HomeScreen({ navigation }) {
           >
             {searchResults.map((val, index) => {
               return (
-                <View
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("MovieAboutScreen", {
+                      name: val.Title,
+                    })
+                  }
                   style={{
                     width: 170,
                     height: 278,
@@ -245,7 +251,7 @@ export default function HomeScreen({ navigation }) {
                       style={{
                         fontSize: 16,
                         lineHeight: 20,
-                        fontWeight: "700",
+                        fontWeight: "bold",
                         color: "#FFFFFF",
                       }}
                       numberOfLines={1}
@@ -256,14 +262,14 @@ export default function HomeScreen({ navigation }) {
                       style={{
                         color: "#a6afed",
                         fontSize: 14,
-                        fontWeight: "500",
+                        fontWeight: 500,
                         lineHeight: 17,
                       }}
                     >
                       {val.Year}
                     </Text>
                   </View>
-                </View>
+                </TouchableOpacity>
               );
             })}
           </View>
@@ -271,7 +277,7 @@ export default function HomeScreen({ navigation }) {
           <Text
             style={{
               fontSize: 16,
-              fontWeight: "700",
+              fontWeight: "bold",
               color: "#FFFFFF",
               textAlign: "center",
             }}
