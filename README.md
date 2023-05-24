@@ -10,20 +10,17 @@ const [searchVisible, setSearchVisible] = useState(false);
 const [searchText, setSearchText] = useState("");
 const [searchResults, setSearchResults] = useState(movieData);
 ```
-<<<<<<< HEAD
+
 
 **Xử lý sự kiện khi người dùng nhấn vào nút tìm kiếm:
 
-=======
 **Xử lý sự kiện khi người dùng nhấn vào nút tìm kiếm**
->>>>>>> 593483901a7e07f18de5a9a4fe1794da7ba974dc
 ```react
 const handleSearchPress = () => {
   setSearchVisible(true);
 };
 ```
-<<<<<<< HEAD
-=======
+
 **Xử lý sự kiện khi người dùng hủy tìm kiếm**
 ``` react 
 const handleSearchCancel = () => {
@@ -76,4 +73,3 @@ const handleSearchSubmit = () => {
   );
 })}
 ```
->>>>>>> 593483901a7e07f18de5a9a4fe1794da7ba974dc
