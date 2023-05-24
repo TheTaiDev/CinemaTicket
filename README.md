@@ -14,7 +14,6 @@ const [searchResults, setSearchResults] = useState(movieData);
 
 **Xử lý sự kiện khi người dùng nhấn vào nút tìm kiếm**
 
-> > > > > > > 53586f426a78f014c2c83c9f4071b33c1eeb3e87
 
 ```react
 const handleSearchPress = () => {
