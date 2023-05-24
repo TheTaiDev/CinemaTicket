@@ -1,6 +1,5 @@
 # Cinema Tickets Booking App
 
-
 ## 1. Home Screen
 
 **Định nghĩa và khởi tạo state cho chức năng tìm kiếm**
@@ -10,22 +9,19 @@ const [searchVisible, setSearchVisible] = useState(false);
 const [searchText, setSearchText] = useState("");
 const [searchResults, setSearchResults] = useState(movieData);
 ```
-<<<<<<< HEAD
 
-**Xử lý sự kiện khi người dùng nhấn vào nút tìm kiếm:
-
-=======
 **Xử lý sự kiện khi người dùng nhấn vào nút tìm kiếm**
->>>>>>> 593483901a7e07f18de5a9a4fe1794da7ba974dc
+
+
 ```react
 const handleSearchPress = () => {
   setSearchVisible(true);
 };
 ```
-<<<<<<< HEAD
-=======
+
 **Xử lý sự kiện khi người dùng hủy tìm kiếm**
-``` react 
+
+```react
 const handleSearchCancel = () => {
   setSearchVisible(false);
   setSearchText("");
@@ -34,7 +30,8 @@ const handleSearchCancel = () => {
 ```
 
 **Xử lý sự kiện khi người dùng nhấn nút gửi tìm kiếm**
-``` react 
+
+```react
 const handleSearchSubmit = () => {
   console.log("Search Text:", searchText);
 
@@ -52,7 +49,9 @@ const handleSearchSubmit = () => {
 };
 
 ```
+
 **Hiển thị danh sách kết quả tìm kiếm hoặc thông báo không tìm thấy kết quả**
+
 ```react
 {searchResults.length > 0 ? (
   {/* Giao diện danh sách kết quả tìm kiếm */}
@@ -60,7 +59,9 @@ const handleSearchSubmit = () => {
   {/* Giao diện thông báo không tìm thấy kết quả */}
 )}
 ```
+
 **Hiển thị các phần tử trong danh sách kết quả tìm kiếm**
+
 ```react
 {searchResults.map((val, index) => {
   return (
@@ -76,4 +77,4 @@ const handleSearchSubmit = () => {
   );
 })}
 ```
->>>>>>> 593483901a7e07f18de5a9a4fe1794da7ba974dc
+
