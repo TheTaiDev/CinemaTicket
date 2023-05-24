@@ -13,6 +13,7 @@ import malls from "../data/malls";
 export default function MovieAboutScreen({ navigation }) {
   //
   const [onSelectedDateChange, setSelectedDate] = useState("");
+  const [seatsData, setSeatsData] = useState([]);
   //
   const mallsData = malls;
   const [mall, setMall] = useState([]);
@@ -40,7 +41,6 @@ export default function MovieAboutScreen({ navigation }) {
           >
             {route.params.name}
           </Text>
-         
         </View>
       ),
     });
@@ -80,6 +80,7 @@ export default function MovieAboutScreen({ navigation }) {
           <Pressable
             onPress={() => {
               setMall(item.name);
+              setSeatsData(item.tableData);
             }}
             key={index}
             style={{ margin: 10 }}
@@ -88,6 +89,7 @@ export default function MovieAboutScreen({ navigation }) {
               style={{
                 fontSize: 16,
                 fontWeight: "500",
+                color: "#FFFF",
               }}
             >
               {item.name}
@@ -98,8 +100,16 @@ export default function MovieAboutScreen({ navigation }) {
                 data={item.showtimes}
                 renderItem={({ item }) => (
                   <Pressable
+                    onPress={() =>
+                      navigation.navigate("TheatreScreen", {
+                        mall: mall,
+                        name: route.params.name,
+                        timeSelected: item,
+                        tableSeats: seatsData,
+                      })
+                    }
                     style={{
-                      borderColor: "#FFFF",
+                      borderColor: "gray",
                       padding: 10,
                       borderWidth: 1,
                       margin: 10,

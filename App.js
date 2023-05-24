@@ -7,6 +7,7 @@ import LoginScreen from "./screens/LoginScreen";
 import SeatsMap from "./screens/SeatMap/SeatsMap";
 import MovieAboutScreen from "./screens/MovieAboutScreen";
 import { MoviesContext } from "./Context";
+import TheatreScreen from "./screens/TheatreScreen";
 const Stack = createStackNavigator();
 function ChatStack() {
   return (
@@ -75,6 +76,22 @@ function ChatStack() {
         }}
         component={MovieAboutScreen}
         name="MovieAboutScreen"
+      />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+
+          title: "TheatreScreen ",
+          headerStyle: {
+            backgroundColor: "rgba(31, 41, 61, 0.7)",
+          },
+          headerTintColor: "#FFFF",
+          headerTitleStyle: {
+            textAlign: "center",
+          },
+        }}
+        component={TheatreScreen}
+        name="TheatreScreen"
       />
     </Stack.Navigator>
   );
