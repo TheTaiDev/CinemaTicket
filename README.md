@@ -96,7 +96,7 @@ const { seats, setSeats } = useContext(MoviesCards);
 
 ```
 
-**Định nghĩa hàm onSeatSelect để xử lý sự kiện khi người dùng chọn hoặc bỏ chọn ghế ngồi**
+**FlatList Định nghĩa hàm onSeatSelect để xử lý sự kiện khi người dùng chọn hoặc bỏ chọn ghế ngồi**
 
 ```react
 const onSeatSelect = (item) => {
