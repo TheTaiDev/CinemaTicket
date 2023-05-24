@@ -110,7 +110,7 @@ const onSeatSelect = (item) => {
 };
 ```
 
-**<FlatList> dùng để hiển thị danh sách ghế ngồi**
+**FlatList dùng để hiển thị danh sách ghế ngồi**
 
 ```react
 numColumns={7}: Thuộc tính numColumns xác định số cột trong danh sách ghế, ở đây là 7 cột.
