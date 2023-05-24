@@ -1,9 +1,23 @@
 import { useRoute } from "@react-navigation/native";
-import React, { useLayoutEffect } from "react";
-import { View, Text, Image } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-
+import React, { useLayoutEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Pressable,
+  FlatList,
+} from "react-native";
+import HorizontalDatepicker from "@awrminkhodaei/react-native-horizontal-datepicker";
+import malls from "../data/malls";
 export default function MovieAboutScreen({ navigation }) {
+  //
+  const [onSelectedDateChange, setSelectedDate] = useState("");
+  //
+  const mallsData = malls;
+  const [mall, setMall] = useState([]);
+  const [showTimes, setShowTimes] = useState([]);
+  console.log(mall, "select");
   // Thanh điều hướng navigation
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -11,97 +25,22 @@ export default function MovieAboutScreen({ navigation }) {
       headerTitle: () => (
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
+            flexDirection: "column",
+            // alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <View
+          <Text
             style={{
-              paddingLeft: 10,
-            }}
-          ></View>
-        </View>
-      ),
-      headerLeft: () => (
-        <View style={{ marginLeft: 16, flexDirection: "row", marginRight: 20 }}>
-          <Image
-            style={{
-              height: 48,
-              width: 48,
-            }}
-            source={require("../assets/image/logo.png")}
-          />
-          <View
-            style={{
-              justifyContent: "center",
-              flexDirection: "row",
-              alignItems: "center",
-              marginLeft: 35,
+              fontSize: 18,
+              fontWeight: "bold",
+              lineHeight: 20,
+              color: "#FFFFFF",
             }}
           >
-            <Icon name="location" size={25} color={"#637394"} />
-            <Text
-              style={{
-                paddingLeft: 5,
-                fontSize: 14,
-                color: "#FFFFFF",
-                fontWeight: "bold",
-                lineHeight: 17,
-              }}
-            >
-              Nur-Sultan
-            </Text>
-          </View>
-        </View>
-      ),
-      headerRight: () => (
-        <View style={{ flexDirection: "row", marginRight: 20 }}>
-          <View
-            style={{
-              justifyContent: "center",
-              flexDirection: "row",
-              alignItems: "center",
-              marginLeft: 10,
-            }}
-          >
-            <Icon name="language" size={25} color={"#637394"} />
-            <Text
-              style={{
-                paddingRight: 18,
-                paddingLeft: 5,
-
-                fontSize: 14,
-                color: "#FFFFFF",
-                fontWeight: "bold",
-                lineHeight: 17,
-              }}
-            >
-              Eng
-            </Text>
-          </View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("LoginScreen")}
-            style={{
-              borderRadius: 8,
-              width: 70,
-              height: 40,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 128, 54, 1)",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: "bold",
-                lineHeight: 17,
-                color: "#FFFFFF",
-              }}
-            >
-              Login
-            </Text>
-          </TouchableOpacity>
+            {route.params.name}
+          </Text>
+         
         </View>
       ),
     });
@@ -111,14 +50,83 @@ export default function MovieAboutScreen({ navigation }) {
   // const { name } = route.params;
 
   return (
-    <View
+    <SafeAreaView
       style={{
-        paddingHorizontal: 16,
+        paddingHorizontal: 10,
         flex: 1,
         backgroundColor: "rgba(31, 41, 61, 0.7)",
       }}
     >
-      <Text>{route.params.name}</Text>
-    </View>
+      <View>
+        <HorizontalDatepicker
+          mode="gregorian"
+          startDate={new Date("2023-05-24")}
+          endDate={new Date("2023-05-31")}
+          initialSelectedDate={new Date("2020-08-22")}
+          onSelectedDateChange={(date) => setSelectedDate(date)}
+          selectedItemWidth={170}
+          unselectedItemWidth={38}
+          itemHeight={38}
+          itemRadius={10}
+          selectedItemTextStyle={styles.selectedItemTextStyle}
+          unselectedItemTextStyle={styles.selectedItemTextStyle}
+          selectedItemBackgroundColor="#222831"
+          unselectedItemBackgroundColor="#ececec"
+          flatListContainerStyle={styles.flatListContainerStyle}
+        />
+      </View>
+      {mallsData.map((item, index) => {
+        return (
+          <Pressable
+            onPress={() => {
+              setMall(item.name);
+            }}
+            key={index}
+            style={{ margin: 10 }}
+          >
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "500",
+              }}
+            >
+              {item.name}
+            </Text>
+            {mall.includes(item.name) ? (
+              <FlatList
+                numColumns={3}
+                data={item.showtimes}
+                renderItem={({ item }) => (
+                  <Pressable
+                    style={{
+                      borderColor: "#FFFF",
+                      padding: 10,
+                      borderWidth: 1,
+                      margin: 10,
+                      padding: 5,
+                      width: 90,
+                      borderRadius: 5,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        color: "#FFFF",
+                        fontWeight: "500",
+                        textAlign: "center",
+                      }}
+                    >
+                      {item}
+                    </Text>
+                  </Pressable>
+                )}
+              />
+            ) : null}
+          </Pressable>
+        );
+      })}
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({});

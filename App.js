@@ -6,6 +6,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SeatsMap from "./screens/SeatMap/SeatsMap";
 import MovieAboutScreen from "./screens/MovieAboutScreen";
+import { MoviesContext } from "./Context";
 const Stack = createStackNavigator();
 function ChatStack() {
   return (
@@ -87,5 +88,9 @@ function RootNavigator() {
   );
 }
 export default function App() {
-  return <RootNavigator />;
+  return (
+    <MoviesContext>
+      <RootNavigator />
+    </MoviesContext>
+  );
 }
