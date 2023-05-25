@@ -1,6 +1,6 @@
 # Cinema Tickets Booking App
 ## Demo App (Hoàn thành giao diện)
-[![Demo](./images/videodemo1.gif)
+[![Demo](./assets/image/videodemo1.gif)
 
 ## 1. Home Screen
 
