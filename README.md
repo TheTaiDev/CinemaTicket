@@ -1,5 +1,6 @@
 # Cinema Tickets Booking App
-
+## Demo App (Hoàn thành giao diện)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PRjtg3mwPvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ## 1. Home Screen
 
 **Định nghĩa và khởi tạo state cho chức năng tìm kiếm**
