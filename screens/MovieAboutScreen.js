@@ -17,7 +17,6 @@ export default function MovieAboutScreen({ navigation }) {
   //
   const mallsData = malls;
   const [mall, setMall] = useState([]);
-  const [showTimes, setShowTimes] = useState([]);
   console.log(mall, "select");
   // Thanh điều hướng navigation
   useLayoutEffect(() => {
@@ -32,6 +31,7 @@ export default function MovieAboutScreen({ navigation }) {
           }}
         >
           <Text
+            numberOfLines={1}
             style={{
               fontSize: 18,
               fontWeight: "bold",

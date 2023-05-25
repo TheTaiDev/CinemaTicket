@@ -116,15 +116,6 @@ showTimes và setShowTimes: Lưu trữ và cập nhật thông tin về các khu
 
 ```
 
-**FlatList dùng để hiển thị danh sách ghế ngồi**
-
-```react
-numColumns={7}: Thuộc tính numColumns xác định số cột trong danh sách ghế, ở đây là 7 cột.
-data={route.params.tableSeats}: Thuộc tính data xác định dữ liệu để hiển thị trong danh sách, ở đây là tableSeats được lấy từ tham số route.
-renderItem={({ item }) => ... }: Thuộc tính renderItem xác định cách hiển thị từng mục trong danh sách. Mỗi mục được truyền vào trong hàm render là một đối tượng { item }.
-{seats.includes(item) ? ... : ... }: Đoạn mã này kiểm tra xem ghế ngồi có trong danh sách ghế đã chọn (seats) hay không để xác định kiểu dáng và màu sắc của ghế.
-```
-
 ## 3. Hiển thị thông tin của ghế ngồi, tiền thanh toán
 
 **Sử dụng Hook useRoute để lấy thông tin về route**
