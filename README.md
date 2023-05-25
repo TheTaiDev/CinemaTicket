@@ -1,5 +1,5 @@
 # Cinema Tickets Booking App
-## Demo App (Hoàn thành giao diện)
+## DemoApp
 ![Demo](https://github.com/manhthetaipy/CinemaTicket/blob/main/assets/image/Videodemo1.gif)
 ## 1. Home Screen
 
