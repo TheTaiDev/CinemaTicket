@@ -1,7 +1,6 @@
 # Cinema Tickets Booking App
 ## Demo App (Hoàn thành giao diện)
-[![Demo](./assets/image/videodemo1.gif)(https://www.example.com/video](https://i.ytimg.com/vi/PRjtg3mwPvw/mqdefault.jpg)](https://www.youtube.com/watch?v=PRjtg3mwPvw)]
-
+![Demo](./assets/image/videodemo1.gif)
 ## 1. Home Screen
 
 **Định nghĩa và khởi tạo state cho chức năng tìm kiếm**
